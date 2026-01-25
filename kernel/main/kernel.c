@@ -8,6 +8,7 @@
 #include <elf.h>
 #include <syscall.h>
 #include <idt.h>
+#include <gdt.h>
 #include <io.h>
 
 extern volatile struct limine_module_request mod_req;
@@ -102,10 +103,6 @@ void init_pit(uint32_t frequency) {
     outb(0x40, (uint8_t)((divisor >> 8) & 0xFF));
 }
 
-void panic_simple_trap() {
-	printf("a");
-}
-
 void unmask_timer_interrupt() {
     // Read the current mask from the Master PIC (Port 0x21)
     uint8_t mask = inb(0x21);
@@ -119,6 +116,7 @@ void unmask_timer_interrupt() {
 
 void kmain(void) {
     clrscr();
+    init_gdt();
     init_idt();
     pic_remap();
     init_heap();

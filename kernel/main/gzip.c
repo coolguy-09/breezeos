@@ -1,11 +1,6 @@
-/* * FREESTANDING GZIP DECOMPRESSOR (No Lengths Version)
- * * WARNING: This version assumes 'dst' is large enough to hold the output.
- * * It reads 'src' until the Gzip stream terminates naturally.
- */
-
 #include <stdint.h>
 #include <stddef.h>
-#include <string.h> // Provided by your kernel
+#include <string.h>
 #include <gzip.h>
 
 // --- Bit Stream Operations ---

@@ -3,7 +3,7 @@ CFLAGS = -I../include/ -ffreestanding -fno-stack-protector -fno-pic -fno-pie -no
 AS = $(CC)
 AFLAGS = $(CFLAGS) -D__ASSEMBLY__
 
-SRC = elf.c entry.S gzip.c halt.c idt.c kernel.c limine_req.c panic.c rootfs.c string.c
+SRC = elf.c entry.S gzip.c halt.c idt.c kernel.c limine_req.c panic.c rootfs.c string.c gdt.c
 OBJ = $(SRC:.c=.o)
 OBJ := $(OBJ:.S=.o)
 
