@@ -1,2 +1,2 @@
-# os
-a private os repo (coming)
+# BreezeOS
+A simple x64 OS (not finished yet)
