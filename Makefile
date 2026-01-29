@@ -17,7 +17,7 @@ kernel:
 	@$(MAKE) -C kernel
 
 rootfs:
-	@printf "  %-7s %s\n" "MKTAR" "rootfs.tar.gz"
+	@printf "  %-7s %s\n" "MKROOT" "rootfs.tar.gz"
 	@test -d rootfs || (\
 		mkdir rootfs && \
 		echo "hello mate" > rootfs/test.txt && \
@@ -25,7 +25,7 @@ rootfs:
 		echo "hello mate this is a subdir" > rootfs/subdir/lol \
 	)
 	@cp test.elf rootfs
-	@tar -czvf rootfs.tar.gz --format=ustar -C rootfs .
+	@tar -czf rootfs.tar.gz --format=ustar -C rootfs .
 
 iso: tools kernel rootfs
 	@printf "  %-7s %s\n" "MKISO" "system.iso"
@@ -48,6 +48,7 @@ clean:
 	@$(MAKE) -C kernel clean
 
 mrproper: clean
+	@printf "  %-7s %s\n" "CLEAN" "tools rootfs iso"
 	@rm -rf tools rootfs iso
 
 .PHONY: all tools kernel rootfs iso clean mrproper
